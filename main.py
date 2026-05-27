@@ -10,7 +10,17 @@ db = mysql.connector.connect(
 )
 
 cursor = db.cursor(dictionary=True)
+cursor.execute("""
 
+CREATE TABLE expenses (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    amount FLOAT,
+    category VARCHAR(100),
+    expense_date DATE
+);
+""")
+db.commit()
 # FastAPI App
 app = FastAPI()
 
